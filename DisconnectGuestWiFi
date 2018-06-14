@@ -1,0 +1,14 @@
+ ipmo ScheduledTasks 
+
+$WiFi = "WiFiname"
+
+$action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-NoProfile -WindowStyle Hidden -command "& {NETSH WLAN DELETE PROFILE NAME="$WiFi"}"' 
+
+
+$trigger =  New-ScheduledTaskTrigger -Daily -At 11am 
+
+
+Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "deleteGuestWiFi" -Description "Daily dump GuestWiFi" 
+
+
+Write-EventLog -LogName "Application" -Source "CM" -EventID 666 -EntryType Information -Message "ScheduledTaskAction - Daily dump GuestWiFi " -Category 1 

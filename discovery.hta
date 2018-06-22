@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <title>Service-now.com - Windows Discovery </title>
+    <HTA:APPLICATION id="app" applicationName="SNC Discovery" maximizeButton="no" minimizeButton="no"
+      singleInstance="yes" version="-0.1" icon="app.ico" scroll="no" />
+
+    <script language="javascript">	   
+      var server = "https://dev60114.service-now.com/";     // substituted by StaticContentProcessor
+      var user   = "admin";    // substituted by StaticContentProcessor
+      var mode = "";
+      var isHTA = true;
+    </script>
+    
+    <script language="javascript" src="https://dev60114.service-now.com/HelpTheHelpDesk.jsdbx?v=04-25-2018_1112">
+    </script>
+
+    <style> 
+      body {
+        font-family: arial;
+      }    
+
+      td.help {
+        margin-left: 5px;
+        font-size: smaller;
+      }
+      
+      label {
+        margin-left: 5px;
+        margin-right: 5px;  
+      }
+    </style>
+  </head>
+  
+  <body onload="onload()">
+    <div id="pageSetup" style="display:inline">
+      <h3>Preparing discovery...</h3>
+    </div>
+    
+    <div id="page0" style="display:none">
+      <table>
+        <tr valign="top">
+          <td nowrap class="label"><label for="hostname">Machine:</label></td>
+          <td><input type="text" size="60" id="hostname" name="hostname"></td>
+        </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td align="right"><br />
+              <input type="button" onclick="runDiscovery();" id="b" name="b" value="Scan" /></td>
+          </tr>
+      </table>
+    </div>
+    
+    <div id="page1" style="display:none">
+    <h3>Discovery Information<span id="status">&nbsp;- Gathering Information</span>&nbsp;<span id="url"></span></h3>
+    <hr />
+    <form>
+      <table>
+        <tr valign="top">
+          <td nowrap class="label"><label for="name">Name:</label></td>
+          <td><input type="text" size="60" readonly="true" id="name" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="os">OS:</label></td>
+          <td><input type="text" size="60" readonly="true" id="os"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="os_version">Version:</label></td>
+          <td><input type="text" size="60" readonly="true" id="os_version" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="os_service_pack">Service Pack:</label></td>
+          <td><input type="text" size="60" readonly="true" id="os_service_pack" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="description">Description:</label></td>
+          <td><input type="text" size="60" readonly="true" id="description" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="manufacturer">Manufacturer:</label></td>
+          <td><input type="text" size="60" readonly="true" id="manufacturer" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="model_id">Model:</label></td>
+          <td><input type="text" size="60" readonly="true" id="model_id" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="ram">Total Physical Memory:</label></td>
+          <td><input type="text" size="60" readonly="true" id="ram" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="user_name">User Name:</label></td>
+          <td><input type="text" size="60" readonly="true" id="user_name" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="cpu_manufacturer">Processor Manufacturer:</label></td>
+          <td><input type="text" size="60" readonly="true" id="cpu_manufacturer" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="cpu_speed">Clock Speed:</label></td>
+          <td><input type="text" size="60" readonly="true" id="cpu_speed" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="cpu_speed_current">Current Clock Speed:</label></td>
+          <td><input type="text" size="60" readonly="true" id="cpu_speed_current" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="cpu_name">Processor Name:</label></td>
+          <td><input type="text" size="60" readonly="true" id="cpu_name" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="ip_address">IP Address:</label></td>
+          <td><input type="text" size="60" readonly="true" id="ip_address" name="Text1"></td>
+        </tr>
+        <tr valign="top">
+          <td nowrap class="label"><label for="mac_address">MAC Address:</label></td>
+          <td><input type="text" size="60" readonly="true" id="mac_address" name="Text1"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><span style="color:red" id="error_text"></span></td>
+          <td align="right"><br />
+            <input type="button" onclick="window.close();" id="b" name="b" value="Close" /></td>
+        </tr>
+      </table>
+    </form>
+    </div>
+  </body>
+</html>

@@ -81,7 +81,7 @@ Domain AG<br>
 Everyroad. 4<br>
 12345 Everywhere<br>
 Tel:       +49 (0) 12 34567 - 890<br>
-Fax:     +49 (0) 12 614 45 – 258<br>
+Fax:     +49 (0) 12 614 45 ï¿½ 258<br>
 it@domain.com<br>
 <br></P>
 <P style='font-family: Arial; font-size: 8pt' />www.domain.com <br>

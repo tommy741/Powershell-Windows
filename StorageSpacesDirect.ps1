@@ -6,7 +6,7 @@ Enable-ClusterStorageSpacesDirect
 
 #Create Volumes
 1..5 | ForEach {
-    New-Volume -Size 50GB -FriendlyName "Volume $_" -FileSystem CSVFS_ReFS
+    New-Volume -FriendlyName "Volume1" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNsme "S2D*" -Size 200GB -ResiliencySettingName Mirror
     }
 
 #Scale-Out

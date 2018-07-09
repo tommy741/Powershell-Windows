@@ -1,0 +1,23 @@
+#Create UninstallBat
+New-Item  c:\temp\uninstall.bat 
+
+#get Reg Object
+$Instances1 = Get-ChildItem "HKLM:\SOFTWARE\WOW6432Node\......\Path1"
+$Instances2 = Get-ChildItem "HKLM:\SOFTWARE\WOW6432Node\......\Path2"
+$Instances3 = Get-ChildItem "HKLM:\SOFTWARE\WOW6432Node\......\Path3"
+
+#get Reg Value and add content into UninstallBat
+    foreach ($i in $Instances1.PSChildName){
+    $path1 = "HKLM:\SOFTWARE\WOW6432Node\Path1...\$i"
+    $unistall1 = (Get-ItemProperty -Path $path1 -Name UninstallString).UninstallString | add-Content c:\temp\uninstall.bat
+    }
+
+    foreach ($j in $Instances2.PSChildName){
+    $path2 = "HKLM:\SOFTWARE\WOW6432Node\Path2...\$j"
+    $unistall2 = (Get-ItemProperty -Path $path2 -Name UninstallString).UninstallString | add-Content c:\temp\uninstall.bat
+    }
+
+    foreach ($k in $Instances3.PSChildName){
+    $path3 = "HKLM:\SOFTWARE\WOW6432Node\Path3...\$k"
+    $unistall3 = (Get-ItemProperty -Path $path3 -Name UninstallString).UninstallString | add-Content c:\temp\uninstall.bat
+    } 

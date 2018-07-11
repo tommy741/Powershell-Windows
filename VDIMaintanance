@@ -1,0 +1,16 @@
+$connectionBroker = "Broker01"
+$collections = Get-RDVirtualDesktopCollection -ConnectionBroker $connectionBroker
+foreach ($collection in $collections) {
+    # update the collection settings to disable the save delay
+    Set-RDVirtualDesktopCollectionConfiguration -CollectionName $collection.CollectionName -ConnectionBroker $connectionBroker -SaveDelayMinutes $null
+    $desktops = Get-RDVirtualDesktop -CollectionName $collection.CollectionName -ConnectionBroker $connectionBroker
+    foreach ($vm in $desktops) {
+        Start-VM -ComputerName $vm.HostName -Name $vm.VirtualDesktopName
+    }
+}
+exit 0
+
+foreach ($collection in $collections) {
+    # update the collection settings and re-enable the 5min save delay
+    Set-RDVirtualDesktopCollectionConfiguration -CollectionName $collection.CollectionName -ConnectionBroker $connectionBroker -SaveDelayMinutes 5
+} 

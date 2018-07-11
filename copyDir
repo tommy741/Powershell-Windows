@@ -1,5 +1,0 @@
-@echo off
-
-xcopy directory directory2 /e /i /h
-
-exit

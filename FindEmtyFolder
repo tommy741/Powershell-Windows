@@ -1,0 +1,13 @@
+$root = "c:"
+$logfile = "c:\temp\LOG.txt"
+
+$dirs = Get-ChildItem -Path $root
+
+foreach ($dir in $dirs) {
+
+if( (Get-ChildItem $root\$dir | Measure-Object).Count -eq 0)
+{
+ echo "$dir Folder is empty und wird gelöscht" >> $logfile
+ Remove-Item -Path "$root\$dir"  >> $logfile
+
+}}

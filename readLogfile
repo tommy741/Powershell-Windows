@@ -1,0 +1,4 @@
+& $PSScriptRoot\Intel-SA-00086-console.exe |out-null
+$a = ((Get-Content -Path $PSScriptRoot\SA-00086*.log | Where-Object {$_ -like 'Status*'})-eq "Status: This system is not vulnerable. It has already been patched.")
+$a
+Remove-Item -Path $PSScriptRoot\SA-00086*

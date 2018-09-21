@@ -1,0 +1,23 @@
+while ($true)
+{ 
+    $Key = Test-Path 'HKLM:\SOFTWARE\Path'
+    $Folder = Test-Path 'C:\Program Files\Path'
+   
+
+  $case1 = ($Key -or $Folder)
+
+
+if ($case1 -eq $False) {
+    New-ItemProperty -Type dword -Path 'HKLM:\SOFTWARE\....' -Name Rollup -value "0" -Force
+    New-ItemProperty -Type dword -Path 'HKLM:\SYSTEM\CurrentControlSet\.....' -Name Start -value "00000004" -Force
+} 
+
+else
+{
+    New-ItemProperty -Type dword -Path 'HKLM:\SOFTWARE\....' -Name Rollup -value "1" -Force
+    New-ItemProperty -Type dword -Path 'HKLM:\SYSTEM\CurrentControlSet\.....' -Name Start -value "00000003" -Force
+}
+
+    Start-Sleep -Seconds 60
+
+    }

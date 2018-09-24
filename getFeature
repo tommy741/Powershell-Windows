@@ -1,0 +1,12 @@
+
+$Features = Get-WindowsOptionalFeature -Online | ? state -eq 'enabled' | select featurename | sort -Descending
+
+Remove-Item -Path 'HKLM:\SOFTWARE.....\Feature\' -Force -ErrorAction Continue
+
+New-Item -Path 'HKLM:\SOFTWARE\......\Feature\' -Force
+
+foreach ($Feature in $Features) {
+
+New-ItemProperty -Type string -Path 'HKLM:\SOFTWARE\.....\Feature\' -Name $Feature.FeatureName -value $Feature.FeatureName -Force
+
+}

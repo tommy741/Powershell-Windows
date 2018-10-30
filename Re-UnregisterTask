@@ -1,0 +1,8 @@
+#Unregister-ScheduledTask
+Unregister-ScheduledTask -TaskName "ResetWMI" -Confirm:$false
+
+Register-ScheduledTask
+ipmo ScheduledTasks 
+$action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-NoProfile -WindowStyle Hidden -command "& {NETSH WLAN DELETE PROFILE NAME="interhyp"}"' 
+$trigger =  New-ScheduledTaskTrigger -Daily -At 11am 
+Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "deleteGuestWiFi" -Description "Daily dump GuestWiFi"

@@ -15,7 +15,7 @@ $Host.UI.RawUI.ForegroundColor = "Green"
 
 function psse {
 $cname = Read-Host -Prompt "Bitte geben Sie den Rechnernamen ein!"
-[string] $cname2 = $cname + ".interhyp-intern.de"
+[string] $cname2 = $cname + ".domain.de"
 Enter-PSSEssion -Computername $cname2 -UseSSL}
 
 function WOLf {
